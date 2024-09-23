@@ -1,0 +1,40 @@
+<!-- notes-list.page.html -->
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-title>Notas</ion-title>
+    <ion-buttons slot="end">
+      <ion-button shape="round" size="large" color="light" (click)="goToFavorites()">
+        <ion-icon slot="icon-only" name="heart-outline"></ion-icon>
+        <ion-badge *ngIf="favoriteCount$ | async as count">{{ count }}</ion-badge>
+      </ion-button>
+      
+      <ion-button shape="round" size="large" color="light" (click)="addNote()">
+        <ion-icon slot="icon-only" name="document-text-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="none">
+    <ion-item *ngFor="let note of notes$ | async" class="ion-align-items-center">
+      <ion-label>
+        <h2><strong>{{ note.title }}</strong></h2>
+        <p>{{ truncateContent(note.content, 15) }}</p>
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-button shape="round" color="primary" (click)="toggleFavorite(note.id)" slot="end">
+          <ion-icon slot="icon-only" [name]="note.isFavorite ? 'heart' : 'heart-outline'"></ion-icon>
+        </ion-button>
+        <ion-button shape="round" color="tertiary" (click)="editNote(note.id)" slot="end">
+          <ion-icon slot="icon-only" name="brush"></ion-icon>
+        </ion-button>
+        <ion-button shape="round" color="danger" (click)="deleteNote(note.id)" slot="end">
+          <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+

@@ -1,0 +1,24 @@
+/* notes-list.page.scss */
+.note-item {
+    --inner-padding-start: 10px;
+    --inner-padding-end: 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  ion-label {
+    flex: 1;
+  }
+  
+  ion-icon[name="document-outline"] {
+    font-size: 28px;
+    color: var(--ion-color-primary);
+  }
+  
+  ion-button {
+    margin: 0 4px;
+  }
+  
+  counts {
+    margin-left: 4px;
+  }

@@ -1,0 +1,56 @@
+<!-- note-detail.page.html -->
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/notes-list"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ note.id ? 'Editar Nota' : 'Nueva Nota' }}</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button *ngIf="note.id" shape="round" size="large" color="light" (click)="shareNote()">
+        <ion-icon color="light" slot="icon-only" name="share-social-outline"></ion-icon>
+      </ion-button>
+      
+      <ion-button shape="round" size="large" color="light" (click)="saveNote()">
+        <ion-icon color="light" slot="icon-only" name="save-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <!-- Título -->
+    <ion-item>
+      <ion-icon slot="start" name="create-outline"></ion-icon>
+      <ion-label position="stacked">Título</ion-label>
+      <ion-input 
+        [(ngModel)]="note.title" 
+        placeholder="Ingrese el título" 
+        class="custom-input"
+      ></ion-input>
+    </ion-item>
+
+    <!-- Contenido -->
+    <ion-item>
+      <ion-icon slot="start" name="document-text-outline"></ion-icon>
+      <ion-label position="stacked">Contenido</ion-label>
+      <ion-textarea 
+        [(ngModel)]="note.content" 
+        placeholder="Ingrese el contenido" 
+        class="large-textarea custom-textarea"
+      ></ion-textarea>
+    </ion-item>
+
+    <!-- Favorito -->
+    <ion-item>
+      <ion-icon slot="start" name="star-outline"></ion-icon>
+      <ion-label>Favorito</ion-label>
+      <ion-checkbox 
+        [(ngModel)]="note.isFavorite" 
+        class="custom-checkbox"
+      ></ion-checkbox>
+    </ion-item>
+  </ion-list>
+</ion-content>
+

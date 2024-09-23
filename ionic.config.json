@@ -1,0 +1,7 @@
+{
+  "name": "iNotas",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

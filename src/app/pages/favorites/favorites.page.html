@@ -1,0 +1,21 @@
+<!-- favorites.page.html -->
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/notes-list"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Notas Favoritas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let note of favoriteNotes$ | async" [routerLink]="['/note-detail', note.id]">
+      <ion-label>
+        <h2>{{ note.title }}</h2>
+        <p>{{ note.content }}</p>
+      </ion-label>
+      <ion-checkbox slot="end" [checked]="note.isFavorite" disabled></ion-checkbox>
+    </ion-item>
+  </ion-list>
+</ion-content>
